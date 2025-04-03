@@ -1,0 +1,517 @@
+{
+	"ID": "74a68a984824b4510d12589f199ad68f",
+	"TypeName": "FlaxEngine.SceneAsset",
+	"EngineBuild": 6605,
+	"Data": [
+		{
+			"ID": "74a68a984824b4510d12589f199ad68f",
+			"TypeName": "FlaxEngine.Scene",
+			"LightmapSettings": {
+				"IndirectLightingIntensity": 1.0,
+				"GlobalObjectsScale": 1.0,
+				"ChartsPadding": 3,
+				"AtlasSize": 1024,
+				"BounceCount": 1,
+				"CompressLightmaps": true,
+				"UseGeometryWithNoMaterials": true,
+				"Quality": 100
+			}
+		},
+		{
+			"ID": "6ff0581d474c84230b3d0fa9f17e0972",
+			"TypeName": "ExitOnEsc",
+			"ParentID": "74a68a984824b4510d12589f199ad68f",
+			"V": {}
+		},
+		{
+			"ID": "28553d634087c67c711ebd96080482aa",
+			"TypeName": "FlaxEngine.EmptyActor",
+			"ParentID": "74a68a984824b4510d12589f199ad68f",
+			"Name": "Visuals"
+		},
+		{
+			"ID": "bc81376747666609b0974580a21519a1",
+			"TypeName": "FlaxEngine.Sky",
+			"ParentID": "28553d634087c67c711ebd96080482aa",
+			"Name": "Sky",
+			"Transform": {
+				"Translation": {
+					"X": -69.65292358398438,
+					"Y": 124.01800537109375,
+					"Z": 35.34806823730469
+				}
+			},
+			"Sun": "deecf0894777293a4f478dadacf2a6f8",
+			"SunPower": 10.0
+		},
+		{
+			"ID": "da5e1c454a56377517d41686ebb0348f",
+			"TypeName": "FlaxEngine.EnvironmentProbe",
+			"ParentID": "28553d634087c67c711ebd96080482aa",
+			"Name": "Environment Probe",
+			"Transform": {
+				"Translation": {
+					"X": 0.0,
+					"Y": 249.3258056640625,
+					"Z": 0.0
+				}
+			},
+			"Brightness": 0.5
+		},
+		{
+			"ID": "deecf0894777293a4f478dadacf2a6f8",
+			"TypeName": "FlaxEngine.DirectionalLight",
+			"ParentID": "28553d634087c67c711ebd96080482aa",
+			"Name": "Sun_Dir_Light",
+			"Transform": {
+				"Translation": {
+					"X": 0.0,
+					"Y": 327.8920593261719,
+					"Z": 0.0
+				}
+			},
+			"Color": {
+				"R": 1.0,
+				"G": 0.9770245552062988,
+				"B": 0.8860000371932983,
+				"A": 1.0
+			},
+			"Brightness": 5.0
+		},
+		{
+			"ID": "eb18e84d41670d6314174b89a1d5ffea",
+			"TypeName": "FlaxEngine.SkyLight",
+			"ParentID": "28553d634087c67c711ebd96080482aa",
+			"Name": "SkyLight",
+			"Transform": {
+				"Translation": {
+					"X": 0.0,
+					"Y": 150.0,
+					"Z": 0.0
+				}
+			},
+			"Brightness": 0.0,
+			"ViewDistance": 1000000.0,
+			"Mode": 0
+		},
+		{
+			"ID": "80299bf442a648ae0996aabbe6185b2e",
+			"TypeName": "FlaxEngine.DirectionalLight",
+			"ParentID": "28553d634087c67c711ebd96080482aa",
+			"Name": "Moon_Dir_Light",
+			"Transform": {
+				"Translation": {
+					"X": 0.0,
+					"Y": 327.8920593261719,
+					"Z": 0.0
+				},
+				"Orientation": {
+					"X": 1.0,
+					"Y": -0.0,
+					"Z": -0.0,
+					"W": -4.371138828673793e-8
+				}
+			},
+			"Color": {
+				"R": 0.8860000371932983,
+				"G": 0.9770245552062988,
+				"B": 1.0,
+				"A": 1.0
+			},
+			"Brightness": 2.5
+		},
+		{
+			"ID": "fa5529db4064a6a74cbc519f5d7ceaed",
+			"TypeName": "FlaxEngine.DirectionalLight",
+			"ParentID": "28553d634087c67c711ebd96080482aa",
+			"Name": "EastAmbientLight",
+			"Transform": {
+				"Translation": {
+					"X": 0.0,
+					"Y": 327.8920593261719,
+					"Z": 0.0
+				},
+				"Orientation": {
+					"X": 2.541437993386353e-8,
+					"Y": -0.9914448857307434,
+					"Z": 0.13052615523338319,
+					"W": 1.930414441631001e-7
+				}
+			},
+			"Brightness": 0.5,
+			"VolumetricScatteringIntensity": 0.0,
+			"CastVolumetricShadow": false,
+			"ShadowsMode": 0
+		},
+		{
+			"ID": "c9bc8aa346d15d5b6954f7896365945f",
+			"TypeName": "FlaxEngine.DirectionalLight",
+			"ParentID": "28553d634087c67c711ebd96080482aa",
+			"Name": "WestAmbientLight",
+			"Transform": {
+				"Translation": {
+					"X": 0.0,
+					"Y": 327.8920593261719,
+					"Z": 0.0
+				},
+				"Orientation": {
+					"X": 0.1305260807275772,
+					"Y": 0.0,
+					"Z": 0.0,
+					"W": 0.9914448857307434
+				}
+			},
+			"Brightness": 0.5,
+			"VolumetricScatteringIntensity": 0.0,
+			"CastVolumetricShadow": false,
+			"ShadowsMode": 0
+		},
+		{
+			"ID": "59b5b59d415474f638d0f4a453f049d1",
+			"TypeName": "FlaxEngine.ExponentialHeightFog",
+			"ParentID": "28553d634087c67c711ebd96080482aa",
+			"Name": "ExponentialHeightFog",
+			"Transform": {
+				"Translation": {
+					"X": -1.4048233032226563,
+					"Y": 50.0,
+					"Z": -78.06526184082031
+				}
+			}
+		},
+		{
+			"ID": "b0d72c3746caebca055e1f921ca21c7c",
+			"TypeName": "FlaxEngine.Camera",
+			"ParentID": "74a68a984824b4510d12589f199ad68f",
+			"Name": "Camera",
+			"Transform": {
+				"Translation": {
+					"X": -198.75326538085938,
+					"Y": 196.89071655273438,
+					"Z": 190.70037841796876
+				},
+				"Orientation": {
+					"X": 0.06189095228910446,
+					"Y": 0.9198267459869385,
+					"Z": -0.1617070734500885,
+					"W": 0.35204988718032839
+				}
+			},
+			"StaticFlags": 0
+		},
+		{
+			"ID": "9053ad38428b10594c741db78d7fcca5",
+			"TypeName": "FreeCamera",
+			"ParentID": "b0d72c3746caebca055e1f921ca21c7c",
+			"V": {}
+		},
+		{
+			"ID": "4a9d87134ab42f4294db6bbcf1902bde",
+			"TypeName": "FlaxEngine.StaticModel",
+			"ParentID": "74a68a984824b4510d12589f199ad68f",
+			"Name": "Floor",
+			"Transform": {
+				"Translation": {
+					"X": 0.0,
+					"Y": -25.0,
+					"Z": 0.0
+				},
+				"Scale": {
+					"X": 10.0,
+					"Y": 0.5,
+					"Z": 10.0
+				}
+			},
+			"Model": "b43f0f8f4aaba3f3156896a5a22ba493",
+			"Buffer": {
+				"Entries": [
+					{
+						"Material": "382f1ae946c519eff6e6f3a2965cf56b",
+						"ShadowsMode": 3,
+						"Visible": true,
+						"ReceiveDecals": true
+					}
+				]
+			}
+		},
+		{
+			"ID": "4a7045e748c74e3de29afd8856f99205",
+			"TypeName": "FlaxEngine.BoxCollider",
+			"ParentID": "4a9d87134ab42f4294db6bbcf1902bde",
+			"Name": "BoxCollider"
+		},
+		{
+			"ID": "e1c92bcc4eb069c29f0a5e9c605ec5ef",
+			"TypeName": "FlaxEngine.StaticModel",
+			"ParentID": "74a68a984824b4510d12589f199ad68f",
+			"Name": "Cube",
+			"Transform": {
+				"Translation": {
+					"X": -76.11029815673828,
+					"Y": 50.577239990234378,
+					"Z": -84.26880645751953
+				}
+			},
+			"Model": "b43f0f8f4aaba3f3156896a5a22ba493",
+			"Buffer": {
+				"Entries": [
+					{
+						"Material": "8391b6da40053a988a0959ab9f26f700",
+						"ShadowsMode": 3,
+						"Visible": true,
+						"ReceiveDecals": true
+					}
+				]
+			}
+		},
+		{
+			"ID": "f05185004d85b1695fc5b1ae710ba373",
+			"TypeName": "FlaxEngine.BoxCollider",
+			"ParentID": "e1c92bcc4eb069c29f0a5e9c605ec5ef",
+			"Name": "BoxCollider"
+		},
+		{
+			"ID": "77ac98a04fe17ae99391019846d067ce",
+			"TypeName": "FlaxEngine.StaticModel",
+			"ParentID": "74a68a984824b4510d12589f199ad68f",
+			"Name": "Plant_Snowdrop",
+			"Transform": {
+				"Translation": {
+					"X": 27.05849838256836,
+					"Y": 0.0,
+					"Z": 0.7354736328125
+				}
+			},
+			"Model": "4896e85745320e03d475c0a17b5faa4d",
+			"Buffer": {
+				"Entries": [
+					{
+						"Material": "00000000000000000000000000000000",
+						"ShadowsMode": 3,
+						"Visible": true,
+						"ReceiveDecals": true
+					}
+				]
+			}
+		},
+		{
+			"ID": "d9e6538340b99b6413eae2a3ac4cb537",
+			"TypeName": "FlaxEngine.StaticModel",
+			"ParentID": "74a68a984824b4510d12589f199ad68f",
+			"Name": "Plant_Snowdrop 0",
+			"Transform": {
+				"Translation": {
+					"X": 16.372512817382814,
+					"Y": 0.0,
+					"Z": 5.469385147094727
+				},
+				"Orientation": {
+					"X": 0.0,
+					"Y": 1.0,
+					"Z": 0.0,
+					"W": -1.4901161193847657e-7
+				}
+			},
+			"Model": "4896e85745320e03d475c0a17b5faa4d",
+			"Buffer": {
+				"Entries": [
+					{
+						"Material": "00000000000000000000000000000000",
+						"ShadowsMode": 3,
+						"Visible": true,
+						"ReceiveDecals": true
+					}
+				]
+			}
+		},
+		{
+			"ID": "fea6bdc34d8a807a6e33ed85e72b3f94",
+			"TypeName": "FlaxEngine.StaticModel",
+			"ParentID": "74a68a984824b4510d12589f199ad68f",
+			"Name": "Measuring",
+			"Transform": {
+				"Translation": {
+					"X": -9.556381225585938,
+					"Y": 213.65011596679688,
+					"Z": 0.0
+				},
+				"Orientation": {
+					"X": 0.7071068286895752,
+					"Y": 0.0,
+					"Z": 0.0,
+					"W": 0.7071068286895752
+				}
+			},
+			"Model": "e7c3250e44d22a0f7f4b299532f2c889",
+			"Buffer": {
+				"Entries": [
+					{
+						"Material": "1fcd99eb443610a47bee3d955a43a379",
+						"ShadowsMode": 3,
+						"Visible": true,
+						"ReceiveDecals": true
+					}
+				]
+			}
+		},
+		{
+			"ID": "4cf4e625450fd9c33545a98c0529a2d2",
+			"TypeName": "LinenFlax.LinenTest",
+			"ParentID": "fea6bdc34d8a807a6e33ed85e72b3f94"
+		},
+		{
+			"ID": "d86017054c2fc3f0d415af92eaad10bf",
+			"TypeName": "LinenFlax.DayNightCycle",
+			"ParentID": "fea6bdc34d8a807a6e33ed85e72b3f94",
+			"NighttimeIntensity": 5.0,
+			"TimeScale": 1.0,
+			"DebugForceTimeAdvanceSeconds": 250.0,
+			"TransitionColor": {
+				"R": 0.4866666793823242,
+				"G": 0.4589672088623047,
+				"B": 0.4826686978340149,
+				"A": 1.0
+			}
+		},
+		{
+			"ID": "3fbaddab4fd26af366e026a750e29e3e",
+			"TypeName": "FlaxEngine.PostFxVolume",
+			"ParentID": "74a68a984824b4510d12589f199ad68f",
+			"Name": "PostFxVolume",
+			"Transform": {
+				"Translation": {
+					"X": -49.384456634521487,
+					"Y": 514.7047729492188,
+					"Z": -34.26881408691406
+				}
+			},
+			"IsBounded": false,
+			"Settings": {
+				"AO": {
+					"OverrideFlags": 63,
+					"Intensity": 2.0,
+					"Power": 1.0,
+					"Radius": 5.0
+				},
+				"GI": {
+					"OverrideFlags": 63,
+					"Mode": 1,
+					"Intensity": 0.5,
+					"BounceIntensity": 0.5,
+					"TemporalResponse": 0.25
+				},
+				"Bloom": {
+					"Enabled": false
+				},
+				"ToneMapping": {},
+				"ColorGrading": {},
+				"EyeAdaptation": {
+					"OverrideFlags": 1,
+					"Mode": 0
+				},
+				"CameraArtifacts": {
+					"OverrideFlags": 1,
+					"VignetteIntensity": 0.0
+				},
+				"LensFlares": {
+					"OverrideFlags": 1,
+					"Intensity": 0.0
+				},
+				"DepthOfField": {
+					"BlurStrength": 0.0,
+					"FocalDistance": 0.0
+				},
+				"MotionBlur": {
+					"Enabled": false
+				},
+				"SSR": {
+					"OverrideFlags": 1,
+					"Intensity": 5.0
+				},
+				"AA": {
+					"OverrideFlags": 1,
+					"Mode": 3
+				},
+				"PostFxMaterials": {}
+			}
+		},
+		{
+			"ID": "b4fe169b4f8de8b5a4edefad849e770d",
+			"TypeName": "FlaxEngine.StaticModel",
+			"ParentID": "74a68a984824b4510d12589f199ad68f",
+			"Name": "Plant_Iris",
+			"Transform": {
+				"Translation": {
+					"X": 29.23337173461914,
+					"Y": 0.0,
+					"Z": -31.47369384765625
+				}
+			},
+			"Model": "78299f464648ca33a7a425998329adfc",
+			"Buffer": {
+				"Entries": [
+					{
+						"Material": "00000000000000000000000000000000",
+						"ShadowsMode": 3,
+						"Visible": true,
+						"ReceiveDecals": true
+					}
+				]
+			}
+		},
+		{
+			"ID": "02606af24da9fb259f425eb3bd72d9ac",
+			"TypeName": "FlaxEngine.StaticModel",
+			"ParentID": "74a68a984824b4510d12589f199ad68f",
+			"Name": "Plant_Iris 0",
+			"Transform": {
+				"Translation": {
+					"X": 45.04814529418945,
+					"Y": 0.0,
+					"Z": -32.30509948730469
+				},
+				"Orientation": {
+					"X": 0.0,
+					"Y": -0.38268375396728518,
+					"Z": 0.0,
+					"W": -0.9238793849945068
+				}
+			},
+			"Model": "78299f464648ca33a7a425998329adfc",
+			"Buffer": {
+				"Entries": [
+					{
+						"Material": "00000000000000000000000000000000",
+						"ShadowsMode": 3,
+						"Visible": true,
+						"ReceiveDecals": true
+					}
+				]
+			}
+		},
+		{
+			"ID": "ac2b7cca41637a77775201b608b16884",
+			"TypeName": "FlaxEngine.StaticModel",
+			"ParentID": "74a68a984824b4510d12589f199ad68f",
+			"Name": "Dahlia",
+			"Transform": {
+				"Translation": {
+					"X": 63.46220397949219,
+					"Y": -0.000003763078211704851,
+					"Z": -88.31793212890625
+				}
+			},
+			"Model": "fa2762e348e035ca777c139d1b6e3143",
+			"Buffer": {
+				"Entries": [
+					{
+						"Material": "00000000000000000000000000000000",
+						"ShadowsMode": 3,
+						"Visible": true,
+						"ReceiveDecals": true
+					}
+				]
+			}
+		}
+	]
+}
