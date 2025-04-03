@@ -76,6 +76,12 @@ void WeatherCycle::OnEnable()
 void WeatherCycle::OnDisable()
 {
     LOG(Info, "WeatherCycle disabled");
+    
+    // Clean up any active effects
+    if (m_rainEffect) { m_rainEffect->DeleteObject(); m_rainEffect = nullptr; }
+    if (m_snowEffect) { m_snowEffect->DeleteObject(); m_snowEffect = nullptr; }
+    if (m_fogEffect) { m_fogEffect->DeleteObject(); m_fogEffect = nullptr; }
+    if (m_windEffect) { m_windEffect->DeleteObject(); m_windEffect = nullptr; }
 }
 
 void WeatherCycle::OnUpdate()
@@ -130,26 +136,36 @@ void WeatherCycle::OnUpdate()
         }
     }
     
-    // Smoothly update particle emitters
+    // Smoothly update particle effects
     if (RainEmitter) {
         float newIntensity = Math::Lerp(m_currentRainIntensity, m_targetRainIntensity, lerpFactor);
         if (Math::Abs(newIntensity - m_currentRainIntensity) > 0.01f) {
             m_currentRainIntensity = newIntensity;
             
-            // Enable/disable based on intensity
-            RainEmitter->IsActive = (m_currentRainIntensity > 0.05f);
+            // Check if we should enable/disable the effect
+            bool shouldBeActive = m_currentRainIntensity > 0.05f;
             
-            // Scale particle emission rate with intensity
-            auto* particleSystem = RainEmitter->GetParticleSystem();
-            if (particleSystem) {
-                // Assume emitter has parameters to control intensity
-                // Implementation depends on your particle system setup
+            // Handle the ParticleSystem correctly
+            if (shouldBeActive && !m_rainEffect) {
+                // Spawn a new effect if needed
+                // m_rainEffect = RainEmitter->Spawn(Actor::GetTransform());
+                // TODO
+            }
+            else if (!shouldBeActive && m_rainEffect) {
+                // Stop the effect when no longer needed
+                m_rainEffect->DeleteObject();
+                m_rainEffect = nullptr;
+            }
+            
+            // If the effect is active, modify its properties based on intensity
+            if (m_rainEffect) {
+                // You might need to scale some property of the effect based on intensity
                 // For example:
-                // particleSystem->SpawnRate = 100.0f * m_currentRainIntensity;
+                // m_rainEffect->SetScale(Vector3(1.0f, 1.0f, 1.0f) * m_currentRainIntensity);
             }
         }
     }
-    
+
     // Apply similar smooth transitions for snow, fog, wind emitters
     // Implementation would follow same pattern as rain emitter
 }

@@ -6,6 +6,7 @@
 #include "Engine/Scripting/Script.h"
 #include "Engine/Level/Actors/PointLight.h"
 #include "Engine/Level/Actors/DirectionalLight.h"
+#include "Engine/Particles/ParticleEffect.h"
 #include "Engine/Particles/ParticleEmitter.h"
 #include "Engine/Particles/ParticleSystem.h"
 
@@ -62,6 +63,12 @@ public:
 
     API_FIELD(Attributes="EditorOrder(13), EditorDisplay(\"Debug\"), Tooltip(\"Lock weather to prevent automatic changes\")")
     bool LockWeather = false;
+private:
+
+    ParticleEffect* m_rainEffect = nullptr;
+    ParticleEffect* m_snowEffect = nullptr;
+    ParticleEffect* m_fogEffect = nullptr;
+    ParticleEffect* m_windEffect = nullptr;
 
 protected:
     // System references
