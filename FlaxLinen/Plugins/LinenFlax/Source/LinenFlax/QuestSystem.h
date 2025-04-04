@@ -1,15 +1,17 @@
 // v QuestSystem.h
 #pragma once
 
-#include "RPGSystem.h"
 #include "QuestEvents.h"
 #include "QuestTypes.h"
+#include "RPGSystem.h"
 #include "Serialization.h"
 
-#include <vector>
+
+#include <memory>
 #include <string>
 #include <unordered_map>
-#include <memory>
+#include <vector>
+
 
 // Forward declaration
 class CharacterProgressionSystem;
@@ -17,20 +19,20 @@ class CharacterProgressionSystem;
 class Quest {
 public:
     Quest(const std::string& id, const std::string& title, const std::string& description);
-    
+
     // Getters/Setters
     std::string GetId() const { return m_id; }
     std::string GetTitle() const { return m_title; }
     std::string GetDescription() const { return m_description; }
     QuestState GetState() const { return m_state; }
     int GetExperienceReward() const { return m_experienceReward; }
-    
+
     void SetState(QuestState state) { m_state = state; }
     void SetExperienceReward(int reward) { m_experienceReward = reward; }
-    
+
     // Add required skill check
     void AddSkillRequirement(const std::string& skillName, int requiredLevel);
-    
+
     // Check if player meets skill requirements
     bool CheckRequirements(const std::unordered_map<std::string, int>& playerSkills) const;
     const std::unordered_map<std::string, int>& GetSkillRequirements() const { return m_skillRequirements; }
@@ -40,14 +42,14 @@ public:
     void Deserialize(BinaryReader& reader);
     void SerializeToText(TextWriter& writer) const;
     void DeserializeFromText(TextReader& reader);
-    
+
 private:
     std::string m_id;
     std::string m_title;
     std::string m_description;
     QuestState m_state;
     int m_experienceReward;
-    
+
     // Requirements to take/complete the quest
     std::unordered_map<std::string, int> m_skillRequirements;
 };
@@ -62,10 +64,10 @@ public:
     void Initialize() override;
     void Shutdown() override;
     void Update(float deltaTime) override;
-    
+
     // Implement GetName from LinenSystem
     std::string GetName() const override { return "QuestSystem"; }
-    
+
     // Quest management
     QuestResult AddQuest(const std::string& id, const std::string& title, const std::string& description);
     QuestResult ActivateQuest(const std::string& id);
@@ -78,7 +80,7 @@ public:
     std::vector<Quest*> GetActiveQuests() const;
     std::vector<Quest*> GetCompletedQuests() const;
     std::vector<Quest*> GetFailedQuests() const;
-    
+
     // Serialization override
     void Serialize(BinaryWriter& writer) const override;
     void Deserialize(BinaryReader& reader) override;
@@ -86,21 +88,23 @@ public:
     void DeserializeFromText(TextReader& reader);
 
     // Meyer's Singleton - thread-safe in C++11 and beyond
-    static QuestSystem* GetInstance() {
+    static QuestSystem* GetInstance()
+    {
         // Thread-safe in C++11 and beyond
         static QuestSystem* instance = new QuestSystem();
         return instance;
     }
-    
+
     // Cleanup method
-    static void Destroy() {
+    static void Destroy()
+    {
         static QuestSystem* instance = GetInstance();
         delete instance;
         instance = nullptr;
     }
-    
+
     ~QuestSystem();
-    
+
 private:
     // Private constructor
     QuestSystem();

@@ -32,17 +32,17 @@ class SaveLoadSystem;
 #include "Serialization.h"
 
 #include "CharacterProgressionSystem.h"
-#include "TimeSystem.h"
-#include "QuestTypes.h"
 #include "QuestEvents.h"
 #include "QuestSystem.h"
+#include "QuestTypes.h"
+#include "TimeSystem.h"
 
 #include "EconomySystem.h"
 #include "WeatherSystem.h"
 #include "WorldProgressionSystem.h"
 
-#include "RelationshipSystem.h"
-#include "FactionSystem.h"
 #include "CrimeSystem.h"
+#include "FactionSystem.h"
+#include "RelationshipSystem.h"
 
 #include "SaveLoadSystem.h"

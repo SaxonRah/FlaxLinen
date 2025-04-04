@@ -2,8 +2,9 @@
 #pragma once
 
 #include <string>
-#include <vector>
 #include <unordered_set>
+#include <vector>
+
 
 #include "LinenSystem.h"
 
@@ -16,10 +17,10 @@ class BinaryWriter;
 class RPGSystem : public LinenSystem {
 public:
     virtual ~RPGSystem() = default;
-    
+
     // System dependencies
     const std::unordered_set<std::string>& GetDependencies() const { return m_dependencies; }
-    
+
     // Plugin reference for accessing other systems
     void SetPlugin(LinenFlax* plugin) { m_plugin = plugin; }
 

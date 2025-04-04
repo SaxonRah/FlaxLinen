@@ -5,14 +5,14 @@
 // Forward declarations
 class LinenFlax;
 
-API_CLASS() class LINENFLAX_API LinenComprehensiveTest : public Script
-{
-API_AUTO_SERIALIZATION();
-DECLARE_SCRIPTING_TYPE(LinenComprehensiveTest);
+API_CLASS()
+class LINENFLAX_API LinenComprehensiveTest : public Script {
+    API_AUTO_SERIALIZATION();
+    DECLARE_SCRIPTING_TYPE(LinenComprehensiveTest);
 
 public:
     // LinenComprehensiveTest(const SpawnParams& params);
-    
+
     // Script interface
     void OnEnable() override;
     void OnDisable() override;
@@ -21,17 +21,17 @@ public:
 private:
     // Plugin reference
     LinenFlax* m_plugin = nullptr;
-    
+
     // Setup state
     bool _isSetupComplete;
     float _simulationTimePassed;
     float _simulationInterval;
     int _currentScenario;
-    
+
     // Scenario flag states
     bool _tradingQuestComplete = false;
     bool _triggeredStormEvent = false;
-    
+
     // Setup methods
     void SubscribeToEvents();
     void SetupSystems();
@@ -43,7 +43,7 @@ private:
     void SetupWeatherSystem();
     void SetupWorldProgressionSystem();
     void SetupQuestSystem();
-    
+
     // Scenario methods
     void RunNextScenario();
     void RunForestExplorationScenario();

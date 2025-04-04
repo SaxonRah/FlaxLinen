@@ -1,9 +1,11 @@
 // v LinenFlax.cpp
 #include "LinenFlax.h"
-#include "LinenSystemIncludes.h" // Include all systems
 #include "Engine/Core/Log.h"
+#include "LinenSystemIncludes.h" // Include all systems
 
-LinenFlax::LinenFlax(const SpawnParams& params) : GamePlugin(params)
+
+LinenFlax::LinenFlax(const SpawnParams& params)
+    : GamePlugin(params)
 {
     _description.Name = TEXT("LinenFlax");
 #if USE_EDITOR
@@ -15,9 +17,10 @@ LinenFlax::LinenFlax(const SpawnParams& params) : GamePlugin(params)
     _description.Version = Version(1, 0, 0);
 }
 
-void LinenFlax::Initialize() {
+void LinenFlax::Initialize()
+{
     GamePlugin::Initialize();
-    
+
     LOG(Info, "LinenFlax::Initialize : ran");
 
     // Set plugin references first
@@ -34,14 +37,14 @@ void LinenFlax::Initialize() {
     RelationshipSystem::GetInstance()->SetPlugin(this);
     FactionSystem::GetInstance()->SetPlugin(this);
     CrimeSystem::GetInstance()->SetPlugin(this);
-    
+
     // Then initialize systems in dependency order
     TestSystem::GetInstance()->Initialize();
     CharacterProgressionSystem::GetInstance()->Initialize();
     QuestSystem::GetInstance()->Initialize();
     SaveLoadSystem::GetInstance()->Initialize();
     TimeSystem::GetInstance()->Initialize();
-    
+
     EconomySystem::GetInstance()->Initialize();
     WeatherSystem::GetInstance()->Initialize();
     WorldProgressionSystem::GetInstance()->Initialize();
@@ -49,13 +52,14 @@ void LinenFlax::Initialize() {
     RelationshipSystem::GetInstance()->Initialize();
     FactionSystem::GetInstance()->Initialize();
     CrimeSystem::GetInstance()->Initialize();
-    
+
     LOG(Info, "All LinenFlax RPG Systems initialized");
 }
 
-void LinenFlax::Deinitialize() {
+void LinenFlax::Deinitialize()
+{
     LOG(Info, "LinenFlax::Deinitialize : ran");
-    
+
     // Shutdown systems in reverse order
     CrimeSystem::GetInstance()->Shutdown();
     FactionSystem::GetInstance()->Shutdown();
@@ -75,14 +79,15 @@ void LinenFlax::Deinitialize() {
     GamePlugin::Deinitialize();
 }
 
-void LinenFlax::Update(float deltaTime) {
+void LinenFlax::Update(float deltaTime)
+{
     // Update all singleton systems
     TestSystem::GetInstance()->Update(deltaTime);
     CharacterProgressionSystem::GetInstance()->Update(deltaTime);
     QuestSystem::GetInstance()->Update(deltaTime);
     SaveLoadSystem::GetInstance()->Update(deltaTime);
     TimeSystem::GetInstance()->Update(deltaTime);
-    
+
     EconomySystem::GetInstance()->Update(deltaTime);
     WeatherSystem::GetInstance()->Update(deltaTime);
     WorldProgressionSystem::GetInstance()->Update(deltaTime);
@@ -95,26 +100,31 @@ void LinenFlax::Update(float deltaTime) {
     m_eventSystem.ProcessEvents();
 }
 
-bool LinenFlax::DetectCycle(const std::string& systemName, 
-    std::unordered_set<std::string>& visited, 
-    std::unordered_set<std::string>& recursionStack) {
-    if (recursionStack.count(systemName)) return true;  // Cycle detected
-    if (visited.count(systemName)) return false;
+bool LinenFlax::DetectCycle(const std::string& systemName,
+    std::unordered_set<std::string>& visited,
+    std::unordered_set<std::string>& recursionStack)
+{
+    if (recursionStack.count(systemName))
+        return true; // Cycle detected
+    if (visited.count(systemName))
+        return false;
 
     visited.insert(systemName);
     recursionStack.insert(systemName);
 
     for (const auto& dependency : m_registeredSystems[systemName]->GetDependencies()) {
-    if (DetectCycle(dependency, visited, recursionStack)) return true;
+        if (DetectCycle(dependency, visited, recursionStack))
+            return true;
     }
 
     recursionStack.erase(systemName);
     return false;
 }
 
-void LinenFlax::CalculateInitializationOrder() {
+void LinenFlax::CalculateInitializationOrder()
+{
     m_initializationOrder.clear();
-    
+
     // Topological sort of systems based on dependencies
     std::unordered_set<std::string> visited;
     std::unordered_set<std::string> inProgress;
@@ -129,7 +139,7 @@ void LinenFlax::CalculateInitializationOrder() {
 
     // Reset visited set for the actual traversal
     visited.clear();
-    
+
     // Visit all registered systems
     for (const auto& pair : m_registeredSystems) {
         if (visited.find(pair.first) == visited.end()) {
@@ -140,26 +150,27 @@ void LinenFlax::CalculateInitializationOrder() {
 
 // Implement the member function
 void LinenFlax::VisitSystem(const std::string& systemName,
-                      std::unordered_set<std::string>& visited,
-                      std::unordered_set<std::string>& inProgress) {
+    std::unordered_set<std::string>& visited,
+    std::unordered_set<std::string>& inProgress)
+{
     if (inProgress.find(systemName) != inProgress.end()) {
         LOG(Error, "Circular dependency detected for system: {0}", String(systemName.c_str()));
         return;
     }
-    
+
     if (visited.find(systemName) != visited.end()) {
         return;
     }
-    
+
     inProgress.insert(systemName);
-    
+
     auto it = m_registeredSystems.find(systemName);
     if (it != m_registeredSystems.end()) {
         for (const auto& dep : it->second->GetDependencies()) {
             VisitSystem(dep, visited, inProgress);
         }
     }
-    
+
     inProgress.erase(systemName);
     visited.insert(systemName);
     m_initializationOrder.push_back(systemName);

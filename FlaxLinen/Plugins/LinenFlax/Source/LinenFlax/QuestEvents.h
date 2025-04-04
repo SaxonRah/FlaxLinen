@@ -5,7 +5,6 @@
 #include "QuestTypes.h"
 #include <string>
 
-
 // Event fired when a quest is completed
 class QuestCompletedEvent : public EventType<QuestCompletedEvent> {
 public:
