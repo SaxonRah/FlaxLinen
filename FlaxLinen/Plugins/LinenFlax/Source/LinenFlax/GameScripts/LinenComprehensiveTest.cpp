@@ -1,9 +1,15 @@
 // v LinenComprehensiveTest.cpp
-#include "LinenTest.h"
-#include "LinenFlax.h"
-#include "LinenSystemIncludes.h"
+
+#include "LinenComprehensiveTest.h"
+
+#include "../LinenTest.h"
+#include "../LinenFlax.h"
+#include "../LinenSystemIncludes.h"
 #include "Engine/Core/Log.h"
 #include "Engine/Scripting/Plugins/PluginManager.h"
+
+#include "Engine/Engine/Time.h"
+#include "Engine/Core/Math/Math.h"
 
 // The main script for comprehensive RPG system testing and integration
 LinenComprehensiveTest::LinenComprehensiveTest(const SpawnParams& params)
@@ -11,7 +17,7 @@ LinenComprehensiveTest::LinenComprehensiveTest(const SpawnParams& params)
 {
     _tickUpdate = true;
     _simulationTimePassed = 0.0f;
-    _simulationInterval = 2.0f;  // Run simulation steps every 2 seconds
+    _simulationInterval = 2.0f;
     _isSetupComplete = false;
     _currentScenario = 0;
 }
@@ -49,7 +55,7 @@ void LinenComprehensiveTest::OnUpdate()
     }
     
     // Update simulation timer
-    _simulationTimePassed += GetWorld()->GetDeltaTime();
+    _simulationTimePassed += Time::GetDeltaTime();
     
     // Run simulation steps at intervals
     if (_simulationTimePassed >= _simulationInterval) {

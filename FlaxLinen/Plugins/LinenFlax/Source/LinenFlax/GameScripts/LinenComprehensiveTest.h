@@ -11,7 +11,7 @@ API_AUTO_SERIALIZATION();
 DECLARE_SCRIPTING_TYPE(LinenComprehensiveTest);
 
 public:
-    LinenComprehensiveTest(const SpawnParams& params);
+    // LinenComprehensiveTest(const SpawnParams& params);
     
     // Script interface
     void OnEnable() override;
